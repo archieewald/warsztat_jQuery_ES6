@@ -1,0 +1,48 @@
+$fontSize : 16;
+$lineHeight: 1.5;
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: ($fontSize + ((6-$i)*6))*1px;
+    line-height: $lineHeight*1em;
+    color: lighten(blue, (15 * $i)*1%);
+  }
+}
+
+//Zadanie 1.
+
+$timeOfDay: "night";
+
+@mixin backgroundDay ($t) {
+  @if ($t == "morning") {
+    background: orange;
+  } @else if($t == "midday") {
+    background: yellow;
+  } @else if($t == "evening"){
+    background: navy;
+  } @else if($t == "night"){
+    background: black;
+  }
+}
+
+body {
+  @include backgroundDay($timeOfDay);
+}
+
+//Zadanie 2.
+
+@for $i from 1 through 10 {
+  .block_#{$i} {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid blue;
+  }
+  @if ($i % 2 == 0) {
+    .block_#{$i} {
+      border-color: orange;
+    }
+  }
+}
